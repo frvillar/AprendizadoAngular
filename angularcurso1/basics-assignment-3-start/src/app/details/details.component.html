@@ -1,0 +1,12 @@
+<div class="container">
+  <button class="btn btn-primary" (click)="onDisplayDetails($event)">Display Details</button>
+  <p *ngIf="showSecret" >Secret Password = tuna</p>
+  <!-- <label [innerText]="i"></label> -->
+  <app-detail
+    *ngFor="let detail of details"
+    >
+  </app-detail>
+  
+ </div>
+ 
+   
