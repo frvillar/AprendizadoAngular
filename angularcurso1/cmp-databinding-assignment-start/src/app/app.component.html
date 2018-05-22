@@ -14,7 +14,10 @@
       </ol>
     </div>
   </div>
-  <app-game-control>
+  <app-game-control
+  (evenCreated)="onEvenGenerated($event)"
+  (oddCreated)="onOddGenerated($event)"
+  >
 
   </app-game-control>
 

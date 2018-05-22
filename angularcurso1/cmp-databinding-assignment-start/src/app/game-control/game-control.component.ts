@@ -21,15 +21,8 @@ export class GameControlComponent implements OnInit {
   onStartGame(){
     this.interval = setInterval(() => {
       this.counter++;
-      console.log(this.counter);
+      
     }, 1000);
-    // if (this.interval){
-    //   clearInterval(this.interval);
-    //   console.log(this.counter);
-    // }
-    // if (this.counter>5){
-    //   this.gameOn = false;
-    // }
   }
 
   onStopGame(){
