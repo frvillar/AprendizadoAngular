@@ -15,11 +15,24 @@
     </div>
   </div>
   <app-game-control
-  (evenCreated)="onEvenGenerated($event)"
-  (oddCreated)="onOddGenerated($event)"
+  (integerCreated)="onIntegerCreated($event)"
   >
-
   </app-game-control>
+  <p >
+    <strong *ngIf="counter > 0  && counter % 2 != 0" style="color: red">{{ counter }}</strong>
+  </p>
+  <p >
+    <strong *ngIf="counter > 0 && counter % 2 == 0" style="color: green">{{ counter }}</strong>
+  </p>
 
-
+  <!-- <app-odd >
+    <p >
+      <strong *ngIf="counter > 0  && counter % 2 != 0" style="color: red">{{ counter }}</strong>
+    </p>
+  </app-odd>
+  <app-even>
+    <p >
+      <strong *ngIf="counter > 0 && counter % 2 == 0" style="color: green">{{ counter }}</strong>
+    </p>
+  </app-even> -->
 </div>

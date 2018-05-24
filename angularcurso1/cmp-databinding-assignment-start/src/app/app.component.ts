@@ -8,5 +8,9 @@ import { Component } from '@angular/core';
 export class AppComponent {
   counter: number = 0;
 
+  onIntegerCreated(newNumber: number){
+    this.counter = newNumber;
+  }
+
 
 }
