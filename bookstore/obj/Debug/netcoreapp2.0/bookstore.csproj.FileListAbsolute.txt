@@ -1,0 +1,11 @@
+D:\villar\cursos\bookstore\bin\Debug\netcoreapp2.0\bookstore.deps.json
+D:\villar\cursos\bookstore\bin\Debug\netcoreapp2.0\bookstore.runtimeconfig.json
+D:\villar\cursos\bookstore\bin\Debug\netcoreapp2.0\bookstore.runtimeconfig.dev.json
+D:\villar\cursos\bookstore\bin\Debug\netcoreapp2.0\bookstore.dll
+D:\villar\cursos\bookstore\bin\Debug\netcoreapp2.0\bookstore.pdb
+D:\villar\cursos\bookstore\obj\Debug\netcoreapp2.0\bookstore.csproj.CoreCompileInputs.cache
+D:\villar\cursos\bookstore\obj\Debug\netcoreapp2.0\bookstore.AssemblyInfoInputs.cache
+D:\villar\cursos\bookstore\obj\Debug\netcoreapp2.0\bookstore.AssemblyInfo.cs
+D:\villar\cursos\bookstore\obj\Debug\netcoreapp2.0\bookstore.dll
+D:\villar\cursos\bookstore\obj\Debug\netcoreapp2.0\bookstore.pdb
+D:\villar\cursos\bookstore\obj\Debug\netcoreapp2.0\bookstore.csprojResolveAssemblyReference.cache
