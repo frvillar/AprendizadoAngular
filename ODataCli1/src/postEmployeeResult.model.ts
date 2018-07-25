@@ -1,5 +1,5 @@
-import { IEmployee } from 'test/helpers/employee';
-import { IOrder } from 'test/helpers/order';
+import { IEmployee } from 'src/helpers/employee';
+import { IOrder } from 'src/helpers/order';
 
 export interface PostEmployeeResult extends IEmployee {
     Headers: string[];
