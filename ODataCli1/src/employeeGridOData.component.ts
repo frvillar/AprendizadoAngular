@@ -3,11 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { FilterMetadata, LazyLoadEvent } from 'primeng/primeng';
 
 import { ODataConfiguration, ODataExecReturnType, ODataPagedResult, ODataQuery, ODataService, ODataServiceFactory } from '../src/index';
-import { IEmployee } from '../test/helpers/employee';
+import { IEmployee } from 'test/helpers/employee';
 import { NorthwindODataConfigurationFactory } from './NorthwindODataConfigurationFactory';
 import { PostEmployeeResult } from './postEmployeeResult.model';
 
-console.log('`EmployeeGridODataComponent` component loaded asynchronously');
+console.log('EmployeeGridODataComponent component loaded asynchronously');
 
 @Component({
     templateUrl: './employeeGridOData.component.html',

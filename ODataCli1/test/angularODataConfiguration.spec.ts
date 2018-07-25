@@ -3,8 +3,8 @@ import { assert } from 'chai';
 import { HttpResponse } from '@angular/common/http';
 import { TestBed } from '@angular/core/testing';
 
-import { AngularODataModule } from '../src';
-import { IODataResponseModel, ODataConfiguration, ODataServiceFactory } from './../src/index';
+import { AngularODataModule } from 'src';
+import { IODataResponseModel, ODataConfiguration, ODataServiceFactory } from 'src';
 import { IEmployee } from './helpers/employee';
 
 import { HttpClientTestingModule } from '@angular/common/http/testing';

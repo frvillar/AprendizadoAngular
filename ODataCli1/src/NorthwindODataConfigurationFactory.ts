@@ -1,6 +1,6 @@
 import { HttpHeaders } from '@angular/common/http';
 
-import { ODataConfiguration } from '../src/index';
+import { ODataConfiguration } from './angularOData/angularODataConfiguration';
 
 export class NorthwindODataConfigurationFactory {
 

@@ -4,8 +4,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { DataTableModule, DialogModule, PaginatorModule, PanelModule, TooltipModule } from 'primeng/primeng';
+import { AngularODataModule } from './angularOData/angularOData.module'
 
-import { AngularODataModule } from '../src';
+
 import { DemoComponent } from './demo.component';
 import { EmployeeGridODataComponent } from './employeeGridOData.component';
 
@@ -13,7 +14,7 @@ import { EmployeeGridODataComponent } from './employeeGridOData.component';
     declarations: [DemoComponent, EmployeeGridODataComponent],
     exports: [PanelModule, NoopAnimationsModule],
     // tslint:disable-next-line:max-line-length
-    imports: [BrowserModule, HttpClientModule, DataTableModule, TooltipModule, PaginatorModule, DialogModule, PanelModule, NoopAnimationsModule, AngularODataModule.forRoot()],
+  imports: [BrowserModule, HttpClientModule, DataTableModule, TooltipModule, PaginatorModule, DialogModule, PanelModule, NoopAnimationsModule, AngularODataModule.forRoot()],
     bootstrap: [DemoComponent]
 })
 export class DemoModule { }

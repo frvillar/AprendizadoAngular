@@ -1,5 +1,5 @@
 import { assert } from 'chai';
-import { ODataUtils } from '../src/angularODataUtils';
+import { ODataUtils } from 'src/angularOData/angularODataUtils';
 
 describe('ODataUtils', () => {
 

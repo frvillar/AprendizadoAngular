@@ -5,8 +5,8 @@ import { HttpClient } from '@angular/common/http';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { inject, TestBed } from '@angular/core/testing';
 
-import { AngularODataModule } from '../src';
-import { ODataConfiguration, ODataOperation, ODataServiceFactory } from './../src/index';
+import { AngularODataModule } from 'src
+import { ODataConfiguration, ODataOperation, ODataServiceFactory } from 'src';
 import { IEmployee } from './helpers/employee';
 
 export class ODataOperationTest extends ODataOperation<IEmployee> {
