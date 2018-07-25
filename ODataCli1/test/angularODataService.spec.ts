@@ -95,6 +95,7 @@ describe('ODataService', () => {
 
         // Assert
         assert.isNotNull(result);
+        // tslint:disable-next-line:max-line-length
         expect(http.get).toHaveBeenCalledWith(`http://localhost/odata/Employees(3dde7303-5414-4af6-b96b-591f33d25445)`, jasmine.any(Object));
     }));
 
@@ -124,6 +125,7 @@ describe('ODataService', () => {
 
         // Assert
         assert.isNotNull(result);
+        // tslint:disable-next-line:max-line-length
         expect(http.get).toHaveBeenCalledWith(`http://localhost/odata/Employees(S='Stef', N=500, B=true, U=3dde7303-5414-4af6-b96b-591f33d25445)`, jasmine.any(Object));
     }));
 
@@ -147,6 +149,7 @@ describe('ODataService', () => {
 
         // Assert
         assert.isNotNull(result);
+        // tslint:disable-next-line:max-line-length
         expect(http.post).toHaveBeenCalledWith(`http://localhost/odata/Employees`, `{"EmployeeID":1,"FirstName":"f","LastName":"l","City":"c","BirthDate":null,"Orders":null,"Boss":null}`, jasmine.any(Object));
     }));
 
@@ -174,6 +177,7 @@ describe('ODataService', () => {
         // Assert
         assert.isNotNull(result);
 
+        // tslint:disable-next-line:max-line-length
         expect(http.post).toHaveBeenCalledWith(`http://localhost/odata/Employees`, jasmine.any(String), new HttpHeadersMatcher({ 'Session': 'abc' }));
     }));
 
@@ -197,6 +201,7 @@ describe('ODataService', () => {
 
         // Assert
         assert.isNotNull(result);
+        // tslint:disable-next-line:max-line-length
         expect(http.patch).toHaveBeenCalledWith(`http://localhost/odata/Employees('x')`, '{"EmployeeID":1,"FirstName":"f","LastName":"l","City":"c","BirthDate":null,"Orders":null,"Boss":null}', jasmine.any(Object));
     }));
 
@@ -271,6 +276,7 @@ describe('ODataService', () => {
 
         // Assert
         assert.isNotNull(result);
+        // tslint:disable-next-line:max-line-length
         expect(http.put).toHaveBeenCalledWith(`http://localhost/odata/Employees('x')`, '{"EmployeeID":1,"FirstName":"f","LastName":"l","City":"c","BirthDate":null,"Orders":null,"Boss":null}', jasmine.any(Object));
     }));
 
@@ -300,9 +306,11 @@ describe('ODataService', () => {
 
         // Assert
         assert.isNotNull(result);
+        // tslint:disable-next-line:max-line-length
         expect(http.put).toHaveBeenCalledWith(`http://localhost/odata/Employees(3dde7303-5414-4af6-b96b-591f33d25445)`, '{}', jasmine.any(Object));
     }));
 
+    // tslint:disable-next-line:max-line-length
     it('Query', inject([HttpClient, ODataServiceFactory, ODataConfiguration], (http: HttpClient, factory: ODataServiceFactory, config: ODataConfiguration) => {
         // Assign
         const service = factory.CreateService<IEmployee>('Employees');
@@ -327,6 +335,7 @@ describe('ODataService', () => {
         expect(http.get).toHaveBeenCalledWith(`http://localhost/odata/Employees`, testOptions);
     }));
 
+    // tslint:disable-next-line:max-line-length
     it('Query and Delete using same service', inject([HttpClient, ODataServiceFactory, ODataConfiguration], (http: HttpClient, factory: ODataServiceFactory, config: ODataConfiguration) => {
         // Assign
         const service = factory.CreateService<IEmployee>('Employees');
@@ -432,6 +441,7 @@ describe('ODataService', () => {
 
         // Assert
         assert.isNotNull(result);
+        // tslint:disable-next-line:max-line-length
         expect(http.get).toHaveBeenCalledWith(`http://localhost/odata/Employees('boom')/getSalesTaxRate(area='abc', postalCode=10)`, jasmine.any(Object));
     }));
 
@@ -446,6 +456,7 @@ describe('ODataService', () => {
 
         // Assert
         assert.isNotNull(result);
+        // tslint:disable-next-line:max-line-length
         expect(http.get).toHaveBeenCalledWith(`http://localhost/odata/Employees(19)/getSalesTaxRate(area='abc', postalCode=10)`, jasmine.any(Object));
     }));
 
@@ -474,9 +485,11 @@ describe('ODataService', () => {
 
         // Assert
         assert.isNotNull(result);
+        // tslint:disable-next-line:max-line-length
         expect(http.get).toHaveBeenCalledWith(`http://localhost/odata/Employees/getSalesTaxRate(area='abc', postalCode=10)`, jasmine.any(Object));
     }));
 
+    // tslint:disable-next-line:max-line-length
     it('Custom Collection Function with Parameters', inject([HttpClient, ODataServiceFactory], (http: HttpClient, factory: ODataServiceFactory) => {
         // Assign
         const service = factory.CreateService<IEmployee>('Employees');
@@ -488,6 +501,7 @@ describe('ODataService', () => {
 
         // Assert
         assert.isNotNull(result);
+        // tslint:disable-next-line:max-line-length
         expect(http.get).toHaveBeenCalledWith(`http://localhost/odata/Employees/getSalesTaxRate(area='abc', postalCode=10)`, jasmine.any(Object));
     }));
 });
