@@ -114,6 +114,16 @@
                     ],
                     "loadData": [
                       {
+                        "code": "let usedOrder: string = event.orderby;",
+                        "condition": "",
+                        "type": "execute"
+                      },
+                      {
+                        "code": "usedOrder = this.orderBy;",
+                        "condition": "event.orderby == ''",
+                        "type": "execute"
+                      },
+                      {
                         "name": "cprojds.getTarefas",
                         "parameters": [
                           {
@@ -138,7 +148,7 @@
                           },
                           {
                             "name": "$orderby",
-                            "value": "${event.orderby}"
+                            "value": "${usedOrder}"
                           },
                           {
                             "name": "$expand",
@@ -155,6 +165,10 @@
                             "name": "getTarefasCount",
                             "type": "set",
                             "value": "event.top != null && event.skip != null ? result['@odata.count'] : ${result.value.length}"
+                          },
+                          {
+                            "code": "",
+                            "type": "execute"
                           }
                         ],
                         "type": "invoke"
@@ -192,6 +206,11 @@
   "events": {
     "load": [
       {
+        "name": "orderBy",
+        "type": "set",
+        "value": "'tarefa1 desc'"
+      },
+      {
         "name": "cprojds.getTarefas",
         "parameters": [
           {
@@ -212,7 +231,7 @@
           },
           {
             "name": "$orderby",
-            "value": "tarefa1 desc"
+            "value": "${orderBy}"
           }
         ],
         "then": [
