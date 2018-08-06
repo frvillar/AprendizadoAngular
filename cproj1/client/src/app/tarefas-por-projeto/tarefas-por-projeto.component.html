@@ -1,0 +1,38 @@
+<rz-content #content1 container="main">
+  <rz-heading #pageTitle size="H1" text="Tarefas por Projeto">
+  </rz-heading>
+  <rz-dropdown #projetosFilter [data]="getProjetosResult" placeholder="Selecione o projeto" textProperty="Descricao" valueProperty="Projeto1" name="projetosFilter" (change)="projetosFilterChange($event)">
+  </rz-dropdown>
+  <rz-grid #grid0 addText="Add" [allowFiltering]="true" [allowPaging]="true" [allowSorting]="true" [data]="tarefas" emptyText="No records to display." [pageSize]="5" [style]="{'height':'322px'}">
+    <rz-grid-column property="Tarefa1" title="Tarefa" type="integer">
+    </rz-grid-column>
+    <rz-grid-column format="date-time" property="Data" title="Data" type="string">
+      <ng-template let-data gridColumnTemplate>
+      {{data?.Data | date:'dd/MM/yyyy'}}
+      </ng-template>
+    </rz-grid-column>
+    <rz-grid-column filterProperty="Pessoa.Nome" property="Responsavel" sortProperty="Pessoa.Nome" title="Pessoa" type="string">
+      <ng-template let-data gridColumnTemplate>
+      {{data?.Pessoa?.Nome}}
+      </ng-template>
+    </rz-grid-column>
+    <rz-grid-column format="decimal" property="Horas" title="Horas" type="number">
+    </rz-grid-column>
+    <rz-grid-column property="Descricao" title="Descricao" type="string">
+    </rz-grid-column>
+    <rz-grid-column filterProperty="Projeto1.Descricao" property="Projeto" sortProperty="Projeto1.Descricao" title="Projeto" type="string">
+      <ng-template let-data gridColumnTemplate>
+      {{data?.Projeto1?.Descricao}}
+      </ng-template>
+    </rz-grid-column>
+    <rz-grid-column format="date-time" property="dataDig" title="Data Dig" type="string">
+      <ng-template let-data gridColumnTemplate>
+      {{data?.dataDig | utcDate}}
+      </ng-template>
+    </rz-grid-column>
+    <rz-grid-column property="Manutencao" title="Manutencao" type="boolean">
+    </rz-grid-column>
+    <rz-grid-column>
+    </rz-grid-column>
+  </rz-grid>
+</rz-content>
