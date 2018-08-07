@@ -1,0 +1,32 @@
+{
+  "access": [
+    "Everybody"
+  ],
+  "components": [
+    {
+      "components": [
+        {
+          "name": "pageTitle",
+          "size": "H1",
+          "text": "Relatório",
+          "type": "heading"
+        },
+        {
+          "name": "ssrsviewer0",
+          "reportName": "cproj/ExtratoCliente",
+          "reportServer": "http://cv2/ReportServer/",
+          "style": {
+            "height": "800px",
+            "width": "1280px"
+          },
+          "type": "ssrsviewer",
+          "useProxy": false
+        }
+      ],
+      "container": "main",
+      "type": "content"
+    }
+  ],
+  "layout": "Main",
+  "name": "Relatório"
+}

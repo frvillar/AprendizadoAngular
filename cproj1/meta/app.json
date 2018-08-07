@@ -15,7 +15,8 @@
     "Pessoas",
     "Projetos",
     "Tarefas",
-    "Tarefas por Projeto"
+    "Tarefas por Projeto",
+    "Relatório"
   ],
   "pages": [
     "Papeis",
@@ -30,7 +31,8 @@
     "Tarefas",
     "Add Tarefa",
     "Edit Tarefa",
-    "Tarefas por Projeto"
+    "Tarefas por Projeto",
+    "Relatório"
   ],
   "serverLang": "cs",
   "serverProject": true,
