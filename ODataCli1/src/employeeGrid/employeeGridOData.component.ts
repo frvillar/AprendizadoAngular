@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { FilterMetadata, LazyLoadEvent } from 'primeng/primeng';
 
-import { ODataConfiguration, ODataExecReturnType, ODataPagedResult, ODataQuery, ODataService, ODataServiceFactory } from '../index';
+import { ODataConfiguration, ODataExecReturnType, ODataPagedResult, ODataQuery, ODataService, ODataServiceFactory } from '../index.1';
 import { IEmployee } from '../../src/helpers/employee';
 import { NorthwindODataConfigurationFactory } from '../NorthwindODataConfigurationFactory';
 import { PostEmployeeResult } from '../postEmployeeResult.model';
@@ -27,6 +27,7 @@ export class EmployeeGridODataComponent implements OnInit {
 
     public filter: LazyLoadEvent;
     public filterStr: string;
+    public orderByStr: string;
 
     public query: ODataQuery<IEmployee>;
 
@@ -130,6 +131,8 @@ export class EmployeeGridODataComponent implements OnInit {
         if (event.sortField) {
             const sortOrder: string = event.sortOrder && event.sortOrder > 0 ? 'asc' : 'desc';
             this.query = this.query.OrderBy(event.sortField + ' ' + sortOrder);
+          this.orderByStr = event.sortField + ' ' + sortOrder;
+
         }
 
         this.query
