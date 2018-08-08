@@ -4,7 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { DataTableModule, DialogModule, PaginatorModule, PanelModule, TooltipModule } from 'primeng/primeng';
-import { AngularODataModule } from './angularOData/angularOData.module';
+import { AngularODataModule } from 'angular-OData-ES5/angularOData.module';
 
 
 import { DemoComponent } from './demo.component';
