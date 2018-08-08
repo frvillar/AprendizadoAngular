@@ -6,18 +6,13 @@
     {
       "components": [
         {
-          "name": "pageTitle",
-          "size": "H1",
-          "text": "Relatório",
-          "type": "heading"
-        },
-        {
           "name": "ssrsviewer0",
           "reportName": "cproj/ExtratoCliente",
           "reportServer": "http://cv2/ReportServer/",
           "style": {
-            "height": "800px",
-            "width": "1280px"
+            "display": "block",
+            "height": "600px",
+            "width": "800px"
           },
           "type": "ssrsviewer",
           "useProxy": false
