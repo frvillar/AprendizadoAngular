@@ -21,6 +21,7 @@ import { HeadingModule } from '@radzen/angular/dist/heading';
 import { GridModule } from '@radzen/angular/dist/grid';
 import { FormModule } from '@radzen/angular/dist/form';
 import { DropDownModule } from '@radzen/angular/dist/dropdown';
+import { SSRSViewerModule } from '@radzen/angular/dist/ssrsviewer';
 import { SharedModule } from '@radzen/angular/dist/shared';
 import { NotificationModule } from '@radzen/angular/dist/notification';
 import { DialogModule } from '@radzen/angular/dist/dialog';
@@ -43,6 +44,7 @@ import { TarefasComponent } from './tarefas/tarefas.component';
 import { AddTarefaComponent } from './add-tarefa/add-tarefa.component';
 import { EditTarefaComponent } from './edit-tarefa/edit-tarefa.component';
 import { TarefasPorProjetoComponent } from './tarefas-por-projeto/tarefas-por-projeto.component';
+import { RelatorioComponent } from './relatório/relatório.component';
 import { LoginLayoutComponent } from './login-layout/login-layout.component';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 
@@ -62,6 +64,7 @@ export const PageDeclarations = [
   AddTarefaComponent,
   EditTarefaComponent,
   TarefasPorProjetoComponent,
+  RelatorioComponent,
 ];
 
 export const LayoutDeclarations = [
@@ -110,6 +113,7 @@ export const AppImports = [
   GridModule,
   FormModule,
   DropDownModule,
+  SSRSViewerModule,
   SharedModule,
   NotificationModule,
   DialogModule,
