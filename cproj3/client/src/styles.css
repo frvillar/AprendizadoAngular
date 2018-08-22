@@ -5,12 +5,3 @@
 
 /* Import the Radzen CSS files */
 @import './styles-generated.css';
-
-.ssrsviewer {
-    display: flex;
-}
-
-iframe {
-    flex: 1;
-}
-

@@ -1,0 +1,40 @@
+{
+  "dataSources": [
+    "cproj2ds"
+  ],
+  "generator": "@radzen/angular-generator",
+  "https": false,
+  "layouts": [
+    "Login",
+    "Main"
+  ],
+  "logo": "",
+  "name": "cproj2",
+  "navigation": [
+    "Papeis",
+    "Pessoas",
+    "Projetos",
+    "Tarefas",
+    "Relatórios"
+  ],
+  "pages": [
+    "Papeis",
+    "Add Papei",
+    "Edit Papei",
+    "Pessoas",
+    "Add Pessoa",
+    "Edit Pessoa",
+    "Projetos",
+    "Add Projeto",
+    "Edit Projeto",
+    "Tarefas",
+    "Add Tarefa",
+    "Edit Tarefa",
+    "Relatórios"
+  ],
+  "serverLang": "cs",
+  "serverProject": true,
+  "serverVersion": "2",
+  "startPage": "Papeis",
+  "theme": "default"
+}

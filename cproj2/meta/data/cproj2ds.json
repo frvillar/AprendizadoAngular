@@ -1,0 +1,836 @@
+{
+  "info": {
+    "title": "cproj2ds",
+    "x-type": "odata",
+    "x-connector": "mssql",
+    "x-connector-version": 12
+  },
+  "definitions": {
+    "Papei": {
+      "x-table": "dbo.Papeis",
+      "resource": "Papeis",
+      "required": [
+        "Nome"
+      ],
+      "properties": {
+        "Papel": {
+          "x-key": true,
+          "x-identity": true,
+          "type": "integer",
+          "x-navigation": [
+            {
+              "inversePropertyName": "Papei",
+              "name": "Pessoas",
+              "type": "Pessoa"
+            }
+          ]
+        },
+        "Nome": {
+          "x-key": false,
+          "type": "string",
+          "length": 50
+        },
+        "Pessoas": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Pessoa"
+          }
+        }
+      }
+    },
+    "Pessoa": {
+      "x-table": "dbo.Pessoas",
+      "resource": "Pessoas",
+      "required": [
+        "Nome",
+        "PapelPrincipal"
+      ],
+      "properties": {
+        "Pessoa1": {
+          "x-key": true,
+          "x-original-name": "Pessoa",
+          "x-identity": true,
+          "type": "integer",
+          "x-navigation": [
+            {
+              "inversePropertyName": "Pessoa",
+              "name": "Projetos",
+              "type": "Projeto"
+            },
+            {
+              "inversePropertyName": "Pessoa",
+              "name": "Tarefas",
+              "type": "Tarefa"
+            }
+          ]
+        },
+        "Nome": {
+          "x-key": false,
+          "type": "string",
+          "length": 150
+        },
+        "PapelPrincipal": {
+          "x-key": false,
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "Papeis",
+            "parentEntityType": "Papei",
+            "type": "Papei",
+            "principalKey": "Papel",
+            "name": "Papei",
+            "textProperty": "Nome",
+            "navigationProperty": "Pessoas"
+          }
+        },
+        "ativo": {
+          "x-key": false,
+          "type": "boolean"
+        },
+        "senha": {
+          "x-key": false,
+          "type": "string",
+          "length": 150
+        },
+        "Projetos": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Projeto"
+          }
+        },
+        "Tarefas": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Tarefa"
+          }
+        }
+      }
+    },
+    "Projeto": {
+      "x-table": "dbo.Projetos",
+      "resource": "Projetos",
+      "required": [
+        "Descricao",
+        "Cliente"
+      ],
+      "properties": {
+        "Projeto1": {
+          "x-key": true,
+          "x-original-name": "Projeto",
+          "x-identity": true,
+          "type": "integer",
+          "x-navigation": [
+            {
+              "inversePropertyName": "Projeto1",
+              "name": "Tarefas",
+              "type": "Tarefa"
+            }
+          ]
+        },
+        "Descricao": {
+          "x-key": false,
+          "type": "string",
+          "length": 50
+        },
+        "Cliente": {
+          "x-key": false,
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "Pessoas",
+            "parentEntityType": "Pessoa",
+            "type": "Pessoa",
+            "principalKey": "Pessoa1",
+            "name": "Pessoa",
+            "textProperty": "Nome",
+            "navigationProperty": "Projetos"
+          }
+        },
+        "ativo": {
+          "x-key": false,
+          "type": "boolean"
+        },
+        "CentroResultado": {
+          "x-key": false,
+          "type": "integer",
+          "format": "int64"
+        },
+        "Tarefas": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Tarefa"
+          }
+        }
+      }
+    },
+    "Tarefa": {
+      "x-table": "dbo.Tarefas",
+      "resource": "Tarefas",
+      "required": [
+        "Responsavel",
+        "Descricao",
+        "Projeto",
+        "Manutencao"
+      ],
+      "properties": {
+        "Tarefa1": {
+          "x-key": true,
+          "x-original-name": "Tarefa",
+          "x-identity": true,
+          "type": "integer",
+          "x-navigation": []
+        },
+        "Data": {
+          "x-key": false,
+          "x-default-sql": "(getdate())",
+          "type": "string",
+          "format": "date-time"
+        },
+        "Responsavel": {
+          "x-key": false,
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "Pessoas",
+            "parentEntityType": "Pessoa",
+            "type": "Pessoa",
+            "principalKey": "Pessoa1",
+            "name": "Pessoa",
+            "textProperty": "Nome",
+            "navigationProperty": "Tarefas"
+          }
+        },
+        "Horas": {
+          "x-key": false,
+          "x-default-sql": "((0))",
+          "type": "number",
+          "format": "decimal"
+        },
+        "Descricao": {
+          "x-key": false,
+          "type": "string",
+          "length": 500
+        },
+        "Projeto": {
+          "x-key": false,
+          "type": "integer",
+          "x-foreignKey": {
+            "parentTable": "Projetos",
+            "parentEntityType": "Projeto",
+            "type": "Projeto",
+            "principalKey": "Projeto1",
+            "name": "Projeto1",
+            "textProperty": "Descricao",
+            "navigationProperty": "Tarefas"
+          }
+        },
+        "dataDig": {
+          "x-key": false,
+          "x-default-sql": "(getdate())",
+          "type": "string",
+          "format": "date-time"
+        },
+        "Manutencao": {
+          "x-key": false,
+          "type": "boolean"
+        }
+      }
+    }
+  },
+  "paths": {
+    "/Papeis": {
+      "get": {
+        "operationId": "getPapeis",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$count",
+            "type": "boolean"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/Papei"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createPapei",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Papei",
+            "schema": {
+              "$ref": "#/definitions/Papei"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Papei"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Pessoas": {
+      "get": {
+        "operationId": "getPessoas",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$count",
+            "type": "boolean"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/Pessoa"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createPessoa",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Pessoa",
+            "schema": {
+              "$ref": "#/definitions/Pessoa"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Pessoa"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Projetos": {
+      "get": {
+        "operationId": "getProjetos",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$count",
+            "type": "boolean"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/Projeto"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createProjeto",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Projeto",
+            "schema": {
+              "$ref": "#/definitions/Projeto"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Projeto"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Tarefas": {
+      "get": {
+        "operationId": "getTarefas",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "$filter",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$top",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$skip",
+            "type": "integer"
+          },
+          {
+            "in": "query",
+            "name": "$orderby",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$count",
+            "type": "boolean"
+          },
+          {
+            "in": "query",
+            "name": "$expand",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "properties": {
+                "value": {
+                  "items": {
+                    "$ref": "#/definitions/Tarefa"
+                  },
+                  "type": "array"
+                }
+              },
+              "type": "object"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "createTarefa",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Tarefa",
+            "schema": {
+              "$ref": "#/definitions/Tarefa"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "schema": {
+              "$ref": "#/definitions/Tarefa"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Papeis({Papel})": {
+      "delete": {
+        "operationId": "deletePapei",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "Papel",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getPapeiByPapel",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "Papel",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Papei"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updatePapei",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "Papel",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "Papei",
+            "schema": {
+              "$ref": "#/definitions/Papei"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Pessoas({Pessoa1})": {
+      "delete": {
+        "operationId": "deletePessoa",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "Pessoa1",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getPessoaByPessoa1",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "Pessoa1",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Pessoa"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updatePessoa",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "Pessoa1",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "Pessoa",
+            "schema": {
+              "$ref": "#/definitions/Pessoa"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Projetos({Projeto1})": {
+      "delete": {
+        "operationId": "deleteProjeto",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "Projeto1",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getProjetoByProjeto1",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "Projeto1",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Projeto"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateProjeto",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "Projeto1",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "Projeto",
+            "schema": {
+              "$ref": "#/definitions/Projeto"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/Tarefas({Tarefa1})": {
+      "delete": {
+        "operationId": "deleteTarefa",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "Tarefa1",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "get": {
+        "operationId": "getTarefaByTarefa1",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "Tarefa1",
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/Tarefa"
+            }
+          },
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "operationId": "updateTarefa",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "Tarefa1",
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "Tarefa",
+            "schema": {
+              "$ref": "#/definitions/Tarefa"
+            }
+          }
+        ],
+        "responses": {
+          "204": {},
+          "default": {
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "basePath": "/odata/cproj2ds",
+  "host": "localhost:5000",
+  "schemes": [
+    "http"
+  ]
+}

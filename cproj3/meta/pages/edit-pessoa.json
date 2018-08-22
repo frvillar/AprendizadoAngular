@@ -1,0 +1,194 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "data": "${pessoa}",
+                  "events": {
+                    "cancel": [
+                      {
+                        "type": "back"
+                      }
+                    ],
+                    "submit": [
+                      {
+                        "error": [
+                          {
+                            "detail": "Unable to update Pessoa",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "cproj3ds.updatePessoa",
+                        "parameters": [
+                          {
+                            "name": "Pessoa1",
+                            "value": "${parameters.Pessoa1}"
+                          },
+                          {
+                            "name": "Pessoa",
+                            "value": "${event}"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "type": "back"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ],
+                    "loadData": [
+                      {
+                        "name": "cproj3ds.getPapeis",
+                        "condition": "event.property == 'PapelPrincipal'",
+                        "parameters": [
+                          {
+                            "name": "$top",
+                            "value": "${event.top}"
+                          },
+                          {
+                            "name": "$skip",
+                            "value": "${event.skip}"
+                          },
+                          {
+                            "name": "$orderby",
+                            "value": "${event.orderby}"
+                          },
+                          {
+                            "name": "$filter",
+                            "value": "${event.filter}"
+                          },
+                          {
+                            "name": "$count",
+                            "value": "true"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "name": "getPapeisResult",
+                            "type": "set",
+                            "value": "${result.value}"
+                          },
+                          {
+                            "name": "getPapeisCount",
+                            "type": "set",
+                            "value": "result['@odata.count']"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ]
+                  },
+                  "fields": [
+                    {
+                      "property": "Nome",
+                      "required": true,
+                      "title": "Nome",
+                      "type": "string",
+                      "maxLength": 150,
+                      "requiredText": "is required"
+                    },
+                    {
+                      "data": "${getPapeisResult}",
+                      "property": "PapelPrincipal",
+                      "required": true,
+                      "textProperty": "Nome",
+                      "title": "Papei",
+                      "type": "lookuppopup",
+                      "valueProperty": "Papel",
+                      "placeholder": "Choose Papei",
+                      "count": "${getPapeisCount}",
+                      "requiredText": "is required"
+                    },
+                    {
+                      "property": "ativo",
+                      "required": false,
+                      "title": "Ativo",
+                      "type": "boolean",
+                      "requiredText": "is required"
+                    },
+                    {
+                      "property": "senha",
+                      "required": false,
+                      "title": "Senha",
+                      "type": "string",
+                      "maxLength": 150,
+                      "requiredText": "is required"
+                    }
+                  ],
+                  "name": "form0",
+                  "type": "form"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "cproj3ds.getPessoaByPessoa1",
+        "parameters": [
+          {
+            "name": "Pessoa1",
+            "value": "${parameters.Pessoa1}"
+          }
+        ],
+        "then": [
+          {
+            "name": "pessoa",
+            "type": "set",
+            "value": "${result}"
+          }
+        ],
+        "type": "invoke"
+      },
+      {
+        "name": "cproj3ds.getPapeis",
+        "parameters": [
+          {
+            "name": "$top",
+            "value": "(<any>this.form0.fields.find(f => f.property == 'PapelPrincipal')).pageSize"
+          },
+          {
+            "name": "$skip",
+            "value": "0"
+          },
+          {
+            "name": "$count",
+            "value": "true"
+          }
+        ],
+        "then": [
+          {
+            "name": "getPapeisResult",
+            "type": "set",
+            "value": "${result.value}"
+          },
+          {
+            "name": "getPapeisCount",
+            "type": "set",
+            "value": "result['@odata.count']"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "name": "Edit Pessoa",
+  "layout": "Main",
+  "access": []
+}

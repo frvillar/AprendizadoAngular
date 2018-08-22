@@ -1,0 +1,188 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "data": "${projeto}",
+                  "events": {
+                    "cancel": [
+                      {
+                        "type": "back"
+                      }
+                    ],
+                    "submit": [
+                      {
+                        "error": [
+                          {
+                            "detail": "Unable to update Projeto",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "cproj2ds.updateProjeto",
+                        "parameters": [
+                          {
+                            "name": "Projeto1",
+                            "value": "${parameters.Projeto1}"
+                          },
+                          {
+                            "name": "Projeto",
+                            "value": "${event}"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "type": "back"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ],
+                    "loadData": [
+                      {
+                        "name": "cproj2ds.getPessoas",
+                        "condition": "event.property == 'Cliente'",
+                        "parameters": [
+                          {
+                            "name": "$top",
+                            "value": "${event.top}"
+                          },
+                          {
+                            "name": "$skip",
+                            "value": "${event.skip}"
+                          },
+                          {
+                            "name": "$orderby",
+                            "value": "${event.orderby}"
+                          },
+                          {
+                            "name": "$filter",
+                            "value": "${event.filter}"
+                          },
+                          {
+                            "name": "$count",
+                            "value": "true"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "name": "getPessoasResult",
+                            "type": "set",
+                            "value": "${result.value}"
+                          },
+                          {
+                            "name": "getPessoasCount",
+                            "type": "set",
+                            "value": "result['@odata.count']"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ]
+                  },
+                  "fields": [
+                    {
+                      "property": "Descricao",
+                      "required": true,
+                      "title": "Descricao",
+                      "type": "string",
+                      "maxLength": 50
+                    },
+                    {
+                      "data": "${getPessoasResult}",
+                      "property": "Cliente",
+                      "required": true,
+                      "textProperty": "Nome",
+                      "title": "Pessoa",
+                      "type": "lookuppopup",
+                      "valueProperty": "Pessoa1",
+                      "placeholder": "Choose Pessoa",
+                      "count": "${getPessoasCount}"
+                    },
+                    {
+                      "property": "ativo",
+                      "required": false,
+                      "title": "Ativo",
+                      "type": "boolean"
+                    },
+                    {
+                      "property": "CentroResultado",
+                      "required": false,
+                      "title": "Centro Resultado",
+                      "type": "integer"
+                    }
+                  ],
+                  "name": "form0",
+                  "type": "form"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "cproj2ds.getProjetoByProjeto1",
+        "parameters": [
+          {
+            "name": "Projeto1",
+            "value": "${parameters.Projeto1}"
+          }
+        ],
+        "then": [
+          {
+            "name": "projeto",
+            "type": "set",
+            "value": "${result}"
+          }
+        ],
+        "type": "invoke"
+      },
+      {
+        "name": "cproj2ds.getPessoas",
+        "parameters": [
+          {
+            "name": "$top",
+            "value": "(<any>this.form0.fields.find(f => f.property == 'Cliente')).pageSize"
+          },
+          {
+            "name": "$skip",
+            "value": "0"
+          },
+          {
+            "name": "$count",
+            "value": "true"
+          }
+        ],
+        "then": [
+          {
+            "name": "getPessoasResult",
+            "type": "set",
+            "value": "${result.value}"
+          },
+          {
+            "name": "getPessoasCount",
+            "type": "set",
+            "value": "result['@odata.count']"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "name": "Edit Projeto",
+  "layout": "Main"
+}

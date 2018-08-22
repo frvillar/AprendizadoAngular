@@ -1,0 +1,206 @@
+{
+  "components": [
+    {
+      "type": "content",
+      "container": "main",
+      "components": [
+        {
+          "type": "heading",
+          "name": "pageTitle",
+          "size": "H1",
+          "text": "Pessoas"
+        },
+        {
+          "type": "row",
+          "components": [
+            {
+              "type": "col",
+              "class": "col-md-12",
+              "components": [
+                {
+                  "name": "grid0",
+                  "allowDelete": true,
+                  "allowAdd": true,
+                  "allowFiltering": true,
+                  "allowMultiSorting": false,
+                  "allowPaging": true,
+                  "allowSorting": true,
+                  "count": "${getPessoasCount}",
+                  "data": "${getPessoasResult}",
+                  "events": {
+                    "loadData": [
+                      {
+                        "name": "cproj2ds.getPessoas",
+                        "parameters": [
+                          {
+                            "name": "$top",
+                            "value": "event.top"
+                          },
+                          {
+                            "name": "$skip",
+                            "value": "event.skip"
+                          },
+                          {
+                            "name": "$expand",
+                            "value": "Papei"
+                          },
+                          {
+                            "name": "$count",
+                            "value": "event.top != null && event.skip != null"
+                          },
+                          {
+                            "name": "$filter",
+                            "value": "${event.filter}"
+                          },
+                          {
+                            "name": "$orderby",
+                            "value": "${event.orderby}"
+                          },
+                          {
+                            "name": "$expand",
+                            "value": "Papei"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "name": "getPessoasResult",
+                            "type": "set",
+                            "value": "${result.value}"
+                          },
+                          {
+                            "name": "getPessoasCount",
+                            "type": "set",
+                            "value": "event.top != null && event.skip != null ? result['@odata.count'] : ${result.value.length}"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ],
+                    "delete": [
+                      {
+                        "error": [
+                          {
+                            "detail": "Unable to delete Pessoa",
+                            "severity": "error",
+                            "summary": "Error",
+                            "type": "notify"
+                          }
+                        ],
+                        "name": "cproj2ds.deletePessoa",
+                        "parameters": [
+                          {
+                            "name": "Pessoa1",
+                            "value": "${event.Pessoa1}"
+                          }
+                        ],
+                        "then": [
+                          {
+                            "detail": "Pessoa deleted!",
+                            "severity": "success",
+                            "summary": "Success",
+                            "type": "notify"
+                          }
+                        ],
+                        "type": "invoke"
+                      }
+                    ],
+                    "add": [
+                      {
+                        "path": "add-pessoa",
+                        "type": "popup"
+                      }
+                    ],
+                    "rowSelect": [
+                      {
+                        "parameters": [
+                          {
+                            "name": "Pessoa1",
+                            "value": "${event.Pessoa1}"
+                          }
+                        ],
+                        "path": "edit-pessoa",
+                        "type": "popup"
+                      }
+                    ]
+                  },
+                  "title": "",
+                  "columns": [
+                    {
+                      "property": "Pessoa1",
+                      "title": "Pessoa",
+                      "type": "integer"
+                    },
+                    {
+                      "property": "Nome",
+                      "title": "Nome",
+                      "type": "string"
+                    },
+                    {
+                      "property": "PapelPrincipal",
+                      "sortProperty": "Papei.Nome",
+                      "filterProperty": "Papei.Nome",
+                      "template": "${data.Papei?.Nome}",
+                      "title": "Papei",
+                      "type": "string"
+                    },
+                    {
+                      "property": "ativo",
+                      "title": "Ativo",
+                      "type": "boolean"
+                    },
+                    {
+                      "property": "senha",
+                      "title": "Senha",
+                      "type": "string"
+                    }
+                  ],
+                  "type": "grid"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "events": {
+    "load": [
+      {
+        "name": "cproj2ds.getPessoas",
+        "parameters": [
+          {
+            "name": "$top",
+            "value": "this.grid0.allowPaging ? this.grid0.pageSize : null"
+          },
+          {
+            "name": "$skip",
+            "value": "this.grid0.allowPaging ? 0 : null"
+          },
+          {
+            "name": "$count",
+            "value": "this.grid0.allowPaging"
+          },
+          {
+            "name": "$expand",
+            "value": "Papei"
+          }
+        ],
+        "then": [
+          {
+            "name": "getPessoasResult",
+            "type": "set",
+            "value": "${result.value}"
+          },
+          {
+            "name": "getPessoasCount",
+            "type": "set",
+            "value": "this.grid0.allowPaging ? result['@odata.count'] : ${result.value.length}"
+          }
+        ],
+        "type": "invoke"
+      }
+    ]
+  },
+  "name": "Pessoas",
+  "layout": "Main"
+}

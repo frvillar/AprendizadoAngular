@@ -1,0 +1,38 @@
+<rz-content #content1 container="main">
+  <rz-heading #pageTitle size="H1" text="Tarefas">
+  </rz-heading>
+  <div class="row">
+    <div class="col-md-12">
+      <rz-grid #grid0 [allowDelete]="true" [allowAdd]="true" [allowFiltering]="true" [allowMultiSorting]="false" [allowPaging]="true" [allowSorting]="true" [count]="getTarefasCount" [data]="getTarefasResult" [pageSize]="5" emptyText="No records to display." addText="Add" (loadData)="grid0LoadData($event)" (delete)="grid0Delete($event)" (add)="grid0Add($event)" (rowSelect)="grid0RowSelect($event)">
+        <rz-grid-column property="Tarefa1" title="Tarefa" type="integer">
+        </rz-grid-column>
+        <rz-grid-column format="date-time" property="Data" title="Data" type="string">
+          <ng-template let-data gridColumnTemplate>
+          {{data?.Data | utcDate}}
+          </ng-template>
+        </rz-grid-column>
+        <rz-grid-column property="Responsavel" sortProperty="Pessoa.Nome" filterProperty="Pessoa.Nome" title="Pessoa" type="string">
+          <ng-template let-data gridColumnTemplate>
+          {{data?.Pessoa?.Nome}}
+          </ng-template>
+        </rz-grid-column>
+        <rz-grid-column format="decimal" property="Horas" title="Horas" type="number">
+        </rz-grid-column>
+        <rz-grid-column property="Descricao" title="Descricao" type="string">
+        </rz-grid-column>
+        <rz-grid-column property="Projeto" sortProperty="Projeto1.Descricao" filterProperty="Projeto1.Descricao" title="Projeto" type="string">
+          <ng-template let-data gridColumnTemplate>
+          {{data?.Projeto1?.Descricao}}
+          </ng-template>
+        </rz-grid-column>
+        <rz-grid-column format="date-time" property="dataDig" title="Data Dig" type="string">
+          <ng-template let-data gridColumnTemplate>
+          {{data?.dataDig | utcDate}}
+          </ng-template>
+        </rz-grid-column>
+        <rz-grid-column property="Manutencao" title="Manutencao" type="boolean">
+        </rz-grid-column>
+      </rz-grid>
+    </div>
+  </div>
+</rz-content>
