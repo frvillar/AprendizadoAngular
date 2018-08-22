@@ -86,7 +86,7 @@ export class PapeisGenerated implements AfterViewInit, OnInit, OnDestroy {
 
 
   load() {
-    this.cprojds.getPapeis(null, this.grid0.allowPaging ? this.grid0.pageSize : null, this.grid0.allowPaging ? 0 : null, null, this.grid0.allowPaging, null)
+    this.cprojds.getPapeis(null, this.grid0.allowPaging ? this.grid0.pageSize : null, this.grid0.allowPaging ? 0 : null, null, this.grid0.allowPaging, null, null, null)
     .subscribe((result: any) => {
       this.getPapeisResult = result.value;
 
@@ -97,7 +97,7 @@ export class PapeisGenerated implements AfterViewInit, OnInit, OnDestroy {
   }
 
   grid0LoadData(event: any) {
-    this.cprojds.getPapeis(`${event.filter}`, event.top, event.skip, `${event.orderby}`, event.top != null && event.skip != null, ``)
+    this.cprojds.getPapeis(`${event.filter}`, event.top, event.skip, `${event.orderby}`, event.top != null && event.skip != null, ``, null, null)
     .subscribe((result: any) => {
       this.getPapeisResult = result.value;
 

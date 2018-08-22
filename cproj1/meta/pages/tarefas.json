@@ -251,5 +251,6 @@
     ]
   },
   "layout": "Main",
-  "name": "Tarefas"
+  "name": "Tarefas",
+  "access": []
 }

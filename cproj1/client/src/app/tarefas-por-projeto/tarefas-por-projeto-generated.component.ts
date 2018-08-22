@@ -86,7 +86,7 @@ export class TarefasPorProjetoGenerated implements AfterViewInit, OnInit, OnDest
 
 
   load() {
-    this.cprojds.getProjetos(null, null, null, null, null, null)
+    this.cprojds.getProjetos(null, null, null, null, null, null, null, null)
     .subscribe((result: any) => {
       this.getProjetosResult = result.value;
     }, (result: any) => {
@@ -95,7 +95,7 @@ export class TarefasPorProjetoGenerated implements AfterViewInit, OnInit, OnDest
   }
 
   projetosFilterChange(event: any) {
-    this.cprojds.getTarefas(`Projeto eq ${event.Projeto1}`, null, null, null, null, `Pessoa,Projeto1`)
+    this.cprojds.getTarefas(`Projeto eq ${event.Projeto1}`, null, null, null, null, `Pessoa,Projeto1`, null, null)
     .subscribe((result: any) => {
       this.tarefas = result.value;
     }, (result: any) => {

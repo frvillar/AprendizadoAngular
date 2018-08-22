@@ -155,7 +155,9 @@
                     }
                   ],
                   "type": "grid",
-                  "pageSize": 5
+                  "pageSize": 5,
+                  "emptyText": "No records to display.",
+                  "addText": "Add"
                 }
               ]
             }
@@ -203,5 +205,6 @@
     ]
   },
   "name": "Pessoas",
-  "layout": "Main"
+  "layout": "Main",
+  "access": []
 }

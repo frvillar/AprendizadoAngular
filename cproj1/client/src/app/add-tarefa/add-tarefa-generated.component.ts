@@ -86,7 +86,7 @@ export class AddTarefaGenerated implements AfterViewInit, OnInit, OnDestroy {
 
 
   load() {
-    this.cprojds.getPessoas(null, (<any>this.form0.fields.find(f => f.property == 'Responsavel')).pageSize, 0, null, true, null)
+    this.cprojds.getPessoas(null, (<any>this.form0.fields.find(f => f.property == 'Responsavel')).pageSize, 0, null, true, null, null, null)
     .subscribe((result: any) => {
       this.getPessoasResult = result.value;
 
@@ -95,7 +95,7 @@ export class AddTarefaGenerated implements AfterViewInit, OnInit, OnDestroy {
 
     });
 
-    this.cprojds.getProjetos(null, (<any>this.form0.fields.find(f => f.property == 'Projeto')).pageSize, 0, null, true, null)
+    this.cprojds.getProjetos(null, (<any>this.form0.fields.find(f => f.property == 'Projeto')).pageSize, 0, null, true, null, null, null)
     .subscribe((result: any) => {
       this.getProjetosResult = result.value;
 
@@ -127,7 +127,7 @@ export class AddTarefaGenerated implements AfterViewInit, OnInit, OnDestroy {
 
   form0LoadData(event: any) {
     if (event.property == 'Responsavel') {
-          this.cprojds.getPessoas(`${event.filter}`, event.top, event.skip, `${event.orderby}`, true, null)
+          this.cprojds.getPessoas(`${event.filter}`, event.top, event.skip, `${event.orderby}`, true, null, null, null)
       .subscribe((result: any) => {
           this.getPessoasResult = result.value;
 
@@ -138,7 +138,7 @@ export class AddTarefaGenerated implements AfterViewInit, OnInit, OnDestroy {
     }
 
     if (event.property == 'Projeto') {
-          this.cprojds.getProjetos(`${event.filter}`, event.top, event.skip, `${event.orderby}`, true, null)
+          this.cprojds.getProjetos(`${event.filter}`, event.top, event.skip, `${event.orderby}`, true, null, null, null)
       .subscribe((result: any) => {
           this.getProjetosResult = result.value;
 

@@ -15,6 +15,8 @@ export interface ODataQueryParams {
   inlinecount?: string;
   expand?: string;
   filter?: string;
+  select?: string;
+  format?: string;
 }
 
 function cacheKey(path: string) {
@@ -66,6 +68,11 @@ export class ODataClient {
             return this.filterResponseBody(response.body);
         }
       });
+    }
+
+    if(odataParams.format == 'csv' || odataParams.format == 'xlsx') {
+      this.export(path, odataParams);
+      return
     }
 
     const params = Object.keys(odataParams).reduce((params, key) => {
@@ -219,6 +226,42 @@ export class ODataClient {
     });
   }
 
+  export(path: string, odataParams?: ODataQueryParams) {
+    let headers = new HttpHeaders();
+
+    if(odataParams.format == 'xlsx') {
+      headers = headers.set('Accept', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+    } else if(odataParams.format == 'csv') {
+      headers = headers.set('Accept', 'text/csv');
+    }
+
+    const params = Object.keys(odataParams).reduce((params, key) => {
+      let value = odataParams[key];
+
+      if (value == null || value === '') {
+        return params;
+      }
+
+      if (key == 'filter' && this.options.legacy) {
+        value = toLegacyFilter(value);
+      }
+
+      return params.set(`$${key}`, value.toString());
+    }, new HttpParams());
+
+
+    return this.http.request('get', Location.joinWithSlash(this.basePath, path), {
+      responseType: 'blob',
+      params: odataParams ? params : undefined,
+      headers,
+      withCredentials: this.options.withCredentials
+    }).subscribe(data => {
+      this.downloadFile(data, `Export.${odataParams.format}`)
+    }, error => {
+      return Observable.throw(error);
+    });
+  }
+  
   private request(method: string, path: string, params?: HttpParams, body?: any) {
     let headers = new HttpHeaders();
 
@@ -260,6 +303,23 @@ export class ODataClient {
       headers,
       withCredentials: this.options.withCredentials
     });
+  }
+
+  private downloadFile(blob, fileName) {
+    if (navigator.msSaveBlob) {
+      navigator.msSaveBlob(blob, fileName);
+    } else {
+      var link = document.createElement("a");
+      if (link.download !== undefined) {
+        var url = URL.createObjectURL(blob);
+        link.setAttribute("href", url);
+        link.setAttribute("download", fileName);
+        link.style.visibility = 'hidden';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+    }
   }
 
   private filterRequestBody(body) {

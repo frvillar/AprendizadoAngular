@@ -96,7 +96,8 @@
                       "required": true,
                       "title": "Descricao",
                       "type": "string",
-                      "maxLength": 50
+                      "maxLength": 50,
+                      "requiredText": "is required"
                     },
                     {
                       "data": "${getPessoasResult}",
@@ -107,19 +108,22 @@
                       "type": "lookuppopup",
                       "valueProperty": "Pessoa1",
                       "placeholder": "Choose Pessoa",
-                      "count": "${getPessoasCount}"
+                      "count": "${getPessoasCount}",
+                      "requiredText": "is required"
                     },
                     {
                       "property": "ativo",
                       "required": false,
                       "title": "Ativo",
-                      "type": "boolean"
+                      "type": "boolean",
+                      "requiredText": "is required"
                     },
                     {
                       "property": "CentroResultado",
                       "required": false,
                       "title": "Centro Resultado",
-                      "type": "integer"
+                      "type": "integer",
+                      "requiredText": "is required"
                     }
                   ],
                   "name": "form0",
@@ -184,5 +188,6 @@
     ]
   },
   "name": "Edit Projeto",
-  "layout": "Main"
+  "layout": "Main",
+  "access": []
 }

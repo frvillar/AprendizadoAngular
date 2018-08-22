@@ -34,7 +34,9 @@
     "Tarefas por Projeto",
     "Relatório"
   ],
+  "port": "8005",
   "serverLang": "cs",
+  "serverPort": 5000,
   "serverProject": true,
   "serverVersion": "2",
   "startPage": "Papeis",

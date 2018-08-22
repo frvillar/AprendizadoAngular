@@ -36,7 +36,13 @@ namespace Cproj1
       services.AddOptions();
       services.AddCors();
 
-      services.AddMvc();
+      services.AddMvc(options =>
+      {
+          options.FormatterMappings.SetMediaTypeMappingForFormat("csv", "text/csv");
+          options.OutputFormatters.Add(new Cproj1.Data.CsvDataContractSerializerOutputFormatter());
+          options.OutputFormatters.Add(new Cproj1.Data.XlsDataContractSerializerOutputFormatter());
+      });
+
       services.AddAuthorization();
       services.AddOData();
       services.AddODataQueryFilter();

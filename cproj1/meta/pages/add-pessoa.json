@@ -93,7 +93,8 @@
                       "required": true,
                       "title": "Nome",
                       "type": "string",
-                      "maxLength": 150
+                      "maxLength": 150,
+                      "requiredText": "is required"
                     },
                     {
                       "data": "${getPapeisResult}",
@@ -104,20 +105,23 @@
                       "type": "lookuppopup",
                       "valueProperty": "Papel",
                       "placeholder": "Choose Papei",
-                      "count": "${getPapeisCount}"
+                      "count": "${getPapeisCount}",
+                      "requiredText": "is required"
                     },
                     {
                       "property": "ativo",
                       "required": false,
                       "title": "Ativo",
-                      "type": "boolean"
+                      "type": "boolean",
+                      "requiredText": "is required"
                     },
                     {
                       "property": "senha",
                       "required": false,
                       "title": "Senha",
                       "type": "string",
-                      "maxLength": 150
+                      "maxLength": 150,
+                      "requiredText": "is required"
                     }
                   ],
                   "name": "form0",
@@ -165,5 +169,6 @@
     ]
   },
   "name": "Add Pessoa",
-  "layout": "Main"
+  "layout": "Main",
+  "access": []
 }

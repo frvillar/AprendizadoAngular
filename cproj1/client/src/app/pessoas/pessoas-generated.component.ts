@@ -86,7 +86,7 @@ export class PessoasGenerated implements AfterViewInit, OnInit, OnDestroy {
 
 
   load() {
-    this.cprojds.getPessoas(null, this.grid0.allowPaging ? this.grid0.pageSize : null, this.grid0.allowPaging ? 0 : null, null, this.grid0.allowPaging, `Papei`)
+    this.cprojds.getPessoas(null, this.grid0.allowPaging ? this.grid0.pageSize : null, this.grid0.allowPaging ? 0 : null, null, this.grid0.allowPaging, `Papei`, null, null)
     .subscribe((result: any) => {
       this.getPessoasResult = result.value;
 
@@ -97,7 +97,7 @@ export class PessoasGenerated implements AfterViewInit, OnInit, OnDestroy {
   }
 
   grid0LoadData(event: any) {
-    this.cprojds.getPessoas(`${event.filter}`, event.top, event.skip, `${event.orderby}`, event.top != null && event.skip != null, `Papei`)
+    this.cprojds.getPessoas(`${event.filter}`, event.top, event.skip, `${event.orderby}`, event.top != null && event.skip != null, `Papei`, null, null)
     .subscribe((result: any) => {
       this.getPessoasResult = result.value;
 

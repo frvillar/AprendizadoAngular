@@ -206,5 +206,6 @@
     ]
   },
   "layout": "Main",
-  "name": "Projetos"
+  "name": "Projetos",
+  "access": []
 }

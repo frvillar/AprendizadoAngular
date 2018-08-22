@@ -3,7 +3,7 @@
     "title": "cprojds",
     "x-type": "odata",
     "x-connector": "mssql",
-    "x-connector-version": 12
+    "x-connector-version": 13
   },
   "definitions": {
     "Papei": {
@@ -268,6 +268,16 @@
             "in": "query",
             "name": "$expand",
             "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$select",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
           }
         ],
         "responses": {
@@ -348,6 +358,16 @@
           {
             "in": "query",
             "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$select",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$format",
             "type": "string"
           }
         ],
@@ -430,6 +450,16 @@
             "in": "query",
             "name": "$expand",
             "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$select",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$format",
+            "type": "string"
           }
         ],
         "responses": {
@@ -510,6 +540,16 @@
           {
             "in": "query",
             "name": "$expand",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$select",
+            "type": "string"
+          },
+          {
+            "in": "query",
+            "name": "$format",
             "type": "string"
           }
         ],

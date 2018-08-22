@@ -86,7 +86,7 @@ export class ProjetosGenerated implements AfterViewInit, OnInit, OnDestroy {
 
 
   load() {
-    this.cprojds.getProjetos(null, this.grid0.allowPaging ? this.grid0.pageSize : null, this.grid0.allowPaging ? 0 : null, null, this.grid0.allowPaging, `Pessoa`)
+    this.cprojds.getProjetos(null, this.grid0.allowPaging ? this.grid0.pageSize : null, this.grid0.allowPaging ? 0 : null, null, this.grid0.allowPaging, `Pessoa`, null, null)
     .subscribe((result: any) => {
       this.getProjetosResult = result.value;
 
@@ -110,7 +110,7 @@ export class ProjetosGenerated implements AfterViewInit, OnInit, OnDestroy {
   }
 
   grid0LoadData(event: any) {
-    this.cprojds.getProjetos(`${event.filter}`, event.top, event.skip, `${event.orderby}`, event.top != null && event.skip != null, `Pessoa`)
+    this.cprojds.getProjetos(`${event.filter}`, event.top, event.skip, `${event.orderby}`, event.top != null && event.skip != null, `Pessoa`, null, null)
     .subscribe((result: any) => {
       this.getProjetosResult = result.value;
 

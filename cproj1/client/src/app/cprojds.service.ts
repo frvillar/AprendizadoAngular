@@ -16,8 +16,8 @@ export class CprojdsService {
     this.odata = new ODataClient(this.http, this.basePath, { legacy: false, withCredentials: true });
   }
 
-  getPapeis(filter: string | null, top: number | null, skip: number | null, orderby: string | null, count: boolean | null, expand: string | null) {
-    return this.odata.get(`/Papeis`, { filter, top, skip, orderby, count, expand });
+  getPapeis(filter: string | null, top: number | null, skip: number | null, orderby: string | null, count: boolean | null, expand: string | null, select: string | null, format: string | null) {
+    return this.odata.get(`/Papeis`, { filter, top, skip, orderby, count, expand, select, format });
   }
 
   createPapei(papei: models.Papei | null) {
@@ -36,8 +36,8 @@ export class CprojdsService {
     return this.odata.patch(`/Papeis(${papel})`, papei, item => item.Papel == papel);
   }
 
-  getPessoas(filter: string | null, top: number | null, skip: number | null, orderby: string | null, count: boolean | null, expand: string | null) {
-    return this.odata.get(`/Pessoas`, { filter, top, skip, orderby, count, expand });
+  getPessoas(filter: string | null, top: number | null, skip: number | null, orderby: string | null, count: boolean | null, expand: string | null, select: string | null, format: string | null) {
+    return this.odata.get(`/Pessoas`, { filter, top, skip, orderby, count, expand, select, format });
   }
 
   createPessoa(pessoa: models.Pessoa | null) {
@@ -56,8 +56,8 @@ export class CprojdsService {
     return this.odata.patch(`/Pessoas(${pessoa1})`, pessoa, item => item.Pessoa1 == pessoa1);
   }
 
-  getProjetos(filter: string | null, top: number | null, skip: number | null, orderby: string | null, count: boolean | null, expand: string | null) {
-    return this.odata.get(`/Projetos`, { filter, top, skip, orderby, count, expand });
+  getProjetos(filter: string | null, top: number | null, skip: number | null, orderby: string | null, count: boolean | null, expand: string | null, select: string | null, format: string | null) {
+    return this.odata.get(`/Projetos`, { filter, top, skip, orderby, count, expand, select, format });
   }
 
   createProjeto(projeto: models.Projeto | null) {
@@ -76,8 +76,8 @@ export class CprojdsService {
     return this.odata.patch(`/Projetos(${projeto1})`, projeto, item => item.Projeto1 == projeto1);
   }
 
-  getTarefas(filter: string | null, top: number | null, skip: number | null, orderby: string | null, count: boolean | null, expand: string | null) {
-    return this.odata.get(`/Tarefas`, { filter, top, skip, orderby, count, expand });
+  getTarefas(filter: string | null, top: number | null, skip: number | null, orderby: string | null, count: boolean | null, expand: string | null, select: string | null, format: string | null) {
+    return this.odata.get(`/Tarefas`, { filter, top, skip, orderby, count, expand, select, format });
   }
 
   createTarefa(tarefa: models.Tarefa | null) {

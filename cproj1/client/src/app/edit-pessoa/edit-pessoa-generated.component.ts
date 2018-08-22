@@ -91,7 +91,7 @@ export class EditPessoaGenerated implements AfterViewInit, OnInit, OnDestroy {
 
     });
 
-    this.cprojds.getPapeis(null, (<any>this.form0.fields.find(f => f.property == 'PapelPrincipal')).pageSize, 0, null, true, null)
+    this.cprojds.getPapeis(null, (<any>this.form0.fields.find(f => f.property == 'PapelPrincipal')).pageSize, 0, null, true, null, null, null)
     .subscribe((result: any) => {
       this.getPapeisResult = result.value;
 
@@ -124,7 +124,7 @@ export class EditPessoaGenerated implements AfterViewInit, OnInit, OnDestroy {
 
   form0LoadData(event: any) {
     if (event.property == 'PapelPrincipal') {
-          this.cprojds.getPapeis(`${event.filter}`, event.top, event.skip, `${event.orderby}`, true, null)
+          this.cprojds.getPapeis(`${event.filter}`, event.top, event.skip, `${event.orderby}`, true, null, null, null)
       .subscribe((result: any) => {
           this.getPapeisResult = result.value;
 

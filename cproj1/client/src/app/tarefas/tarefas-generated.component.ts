@@ -90,7 +90,7 @@ export class TarefasGenerated implements AfterViewInit, OnInit, OnDestroy {
   load() {
     this.orderBy = 'tarefa1 desc';
 
-    this.cprojds.getTarefas(null, this.grid0.allowPaging ? this.grid0.pageSize : null, this.grid0.allowPaging ? 0 : null, `${this.orderBy}`, this.grid0.allowPaging, `Pessoa,Projeto1`)
+    this.cprojds.getTarefas(null, this.grid0.allowPaging ? this.grid0.pageSize : null, this.grid0.allowPaging ? 0 : null, `${this.orderBy}`, this.grid0.allowPaging, `Pessoa,Projeto1`, null, null)
     .subscribe((result: any) => {
       this.getTarefasResult = result.value;
 
@@ -120,7 +120,7 @@ export class TarefasGenerated implements AfterViewInit, OnInit, OnDestroy {
       usedOrder = this.orderBy;
     }
 
-    this.cprojds.getTarefas(`${event.filter}`, event.top, event.skip, `${usedOrder}`, event.top != null && event.skip != null, `Pessoa,Projeto1`)
+    this.cprojds.getTarefas(`${event.filter}`, event.top, event.skip, `${usedOrder}`, event.top != null && event.skip != null, `Pessoa,Projeto1`, null, null)
     .subscribe((result: any) => {
       this.getTarefasResult = result.value;
 

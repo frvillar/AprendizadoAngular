@@ -131,7 +131,8 @@
                       "property": "Data",
                       "required": false,
                       "title": "Data",
-                      "type": "date"
+                      "type": "date",
+                      "requiredText": "is required"
                     },
                     {
                       "data": "${getPessoasResult}",
@@ -142,20 +143,23 @@
                       "type": "lookuppopup",
                       "valueProperty": "Pessoa1",
                       "placeholder": "Choose Pessoa",
-                      "count": "${getPessoasCount}"
+                      "count": "${getPessoasCount}",
+                      "requiredText": "is required"
                     },
                     {
                       "property": "Horas",
                       "required": false,
                       "title": "Horas",
-                      "type": "number"
+                      "type": "number",
+                      "requiredText": "is required"
                     },
                     {
                       "property": "Descricao",
                       "required": true,
                       "title": "Descricao",
                       "type": "string",
-                      "maxLength": 500
+                      "maxLength": 500,
+                      "requiredText": "is required"
                     },
                     {
                       "data": "${getProjetosResult}",
@@ -166,19 +170,22 @@
                       "type": "lookuppopup",
                       "valueProperty": "Projeto1",
                       "placeholder": "Choose Projeto",
-                      "count": "${getProjetosCount}"
+                      "count": "${getProjetosCount}",
+                      "requiredText": "is required"
                     },
                     {
                       "property": "dataDig",
                       "required": false,
                       "title": "Data Dig",
-                      "type": "date"
+                      "type": "date",
+                      "requiredText": "is required"
                     },
                     {
                       "property": "Manutencao",
                       "required": true,
                       "title": "Manutencao",
-                      "type": "boolean"
+                      "type": "boolean",
+                      "requiredText": "is required"
                     }
                   ],
                   "name": "form0",
@@ -256,5 +263,6 @@
     ]
   },
   "name": "Add Tarefa",
-  "layout": "Main"
+  "layout": "Main",
+  "access": []
 }

@@ -53,7 +53,8 @@
                       "required": true,
                       "title": "Nome",
                       "type": "string",
-                      "maxLength": 50
+                      "maxLength": 50,
+                      "requiredText": "is required"
                     }
                   ],
                   "name": "form0",
@@ -70,5 +71,6 @@
     "load": []
   },
   "name": "Add Papei",
-  "layout": "Main"
+  "layout": "Main",
+  "access": []
 }
