@@ -44,7 +44,7 @@ import { TarefasComponent } from './tarefas/tarefas.component';
 import { AddTarefaComponent } from './add-tarefa/add-tarefa.component';
 import { EditTarefaComponent } from './edit-tarefa/edit-tarefa.component';
 import { TarefasPorProjetoComponent } from './tarefas-por-projeto/tarefas-por-projeto.component';
-import { RelatorioComponent } from './relatório/relatório.component';
+import { RelatorioComponent } from './relatorio/relatorio.component';
 import { LoginLayoutComponent } from './login-layout/login-layout.component';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 

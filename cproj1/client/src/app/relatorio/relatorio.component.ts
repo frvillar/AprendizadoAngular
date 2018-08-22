@@ -1,9 +1,9 @@
 import { Component, Injector } from '@angular/core';
-import { RelatorioGenerated } from './relatório-generated.component';
+import { RelatorioGenerated } from './relatorio-generated.component';
 
 @Component({
-  selector: 'relatório',
-  templateUrl: './relatório.component.html'
+  selector: 'relatorio',
+  templateUrl: './relatorio.component.html'
 })
 export class RelatorioComponent extends RelatorioGenerated {
   constructor(injector: Injector) {

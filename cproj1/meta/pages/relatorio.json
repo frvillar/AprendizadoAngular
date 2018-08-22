@@ -1,0 +1,30 @@
+{
+  "access": [
+    "Everybody"
+  ],
+  "components": [
+    {
+      "components": [
+        {
+          "name": "pageTitle",
+          "size": "H1",
+          "text": "relatorio",
+          "type": "heading"
+        },
+        {
+          "name": "ssrsviewer0",
+          "reportName": "cproj/extratocliente",
+          "reportServer": "http://samples.casavillar.com.br/reportserver",
+          "style": {
+            "height": "556px"
+          },
+          "type": "ssrsviewer"
+        }
+      ],
+      "container": "main",
+      "type": "content"
+    }
+  ],
+  "layout": "Main",
+  "name": "relatorio"
+}

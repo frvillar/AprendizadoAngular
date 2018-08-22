@@ -16,7 +16,7 @@ import { TarefasComponent } from './tarefas/tarefas.component';
 import { AddTarefaComponent } from './add-tarefa/add-tarefa.component';
 import { EditTarefaComponent } from './edit-tarefa/edit-tarefa.component';
 import { TarefasPorProjetoComponent } from './tarefas-por-projeto/tarefas-por-projeto.component';
-import { RelatorioComponent } from './relatório/relatório.component';
+import { RelatorioComponent } from './relatorio/relatorio.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/papeis', pathMatch: 'full' },
@@ -77,7 +77,7 @@ export const routes: Routes = [
         component: TarefasPorProjetoComponent
       },
       {
-        path: 'relatório',
+        path: 'relatorio',
         component: RelatorioComponent
       },
     ]

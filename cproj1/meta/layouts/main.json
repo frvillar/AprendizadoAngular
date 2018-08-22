@@ -47,6 +47,34 @@
     {
       "components": [
         {
+          "items": [
+            {
+              "path": "papeis",
+              "text": "Papeis",
+              "visible": false
+            },
+            {
+              "path": "pessoas",
+              "text": "Pessoas"
+            },
+            {
+              "path": "projetos",
+              "text": "Projetos"
+            },
+            {
+              "path": "tarefas",
+              "text": "Tarefas"
+            },
+            {
+              "path": "tarefas-por-projeto",
+              "text": "Tarefas por Projeto"
+            },
+            {
+              "icon": "",
+              "path": "/relatorio",
+              "text": "Relatório"
+            }
+          ],
           "name": "panelmenu0",
           "style": {
             "height": "100%"

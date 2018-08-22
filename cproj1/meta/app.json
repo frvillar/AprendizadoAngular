@@ -16,7 +16,7 @@
     "Projetos",
     "Tarefas",
     "Tarefas por Projeto",
-    "Relatório"
+    "relatorio"
   ],
   "pages": [
     "Papeis",
@@ -32,7 +32,7 @@
     "Add Tarefa",
     "Edit Tarefa",
     "Tarefas por Projeto",
-    "Relatório"
+    "relatorio"
   ],
   "port": "8005",
   "serverLang": "cs",

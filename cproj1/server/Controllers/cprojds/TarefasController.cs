@@ -91,7 +91,8 @@ namespace Cproj1.Controllers.Cprojds
 
         return new JsonResult(itemToReturn, new Newtonsoft.Json.JsonSerializerSettings
         {
-            ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore,
+            DateTimeZoneHandling = Newtonsoft.Json.DateTimeZoneHandling.Utc
         })
         {
             StatusCode = 200
@@ -122,7 +123,8 @@ namespace Cproj1.Controllers.Cprojds
 
         return new JsonResult(itemToReturn, new Newtonsoft.Json.JsonSerializerSettings
         {
-            ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore,
+            DateTimeZoneHandling = Newtonsoft.Json.DateTimeZoneHandling.Utc
         })
         {
             StatusCode = 200
@@ -152,7 +154,8 @@ namespace Cproj1.Controllers.Cprojds
 
         return new JsonResult(itemToReturn, new Newtonsoft.Json.JsonSerializerSettings
         {
-            ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+            ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore,
+            DateTimeZoneHandling = Newtonsoft.Json.DateTimeZoneHandling.Utc
         })
         {
             StatusCode = 201

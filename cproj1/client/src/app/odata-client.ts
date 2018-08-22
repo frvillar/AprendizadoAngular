@@ -70,9 +70,8 @@ export class ODataClient {
       });
     }
 
-    if(odataParams.format == 'csv' || odataParams.format == 'xlsx') {
-      this.export(path, odataParams);
-      return
+    if (odataParams.format == 'csv' || odataParams.format == 'xlsx') {
+      return this.export(path, odataParams);
     }
 
     const params = Object.keys(odataParams).reduce((params, key) => {
@@ -229,9 +228,9 @@ export class ODataClient {
   export(path: string, odataParams?: ODataQueryParams) {
     let headers = new HttpHeaders();
 
-    if(odataParams.format == 'xlsx') {
+    if (odataParams.format == 'xlsx') {
       headers = headers.set('Accept', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-    } else if(odataParams.format == 'csv') {
+    } else if (odataParams.format == 'csv') {
       headers = headers.set('Accept', 'text/csv');
     }
 
@@ -255,13 +254,14 @@ export class ODataClient {
       params: odataParams ? params : undefined,
       headers,
       withCredentials: this.options.withCredentials
-    }).subscribe(data => {
-      this.downloadFile(data, `Export.${odataParams.format}`)
-    }, error => {
-      return Observable.throw(error);
+    }).map(response => {
+      this.downloadFile(response, `Export.${odataParams.format}`)
+    })
+    .catch(response => {
+      return Observable.throw(response.status == 0 ? {error: response} : response.error);
     });
   }
-  
+
   private request(method: string, path: string, params?: HttpParams, body?: any) {
     let headers = new HttpHeaders();
 
