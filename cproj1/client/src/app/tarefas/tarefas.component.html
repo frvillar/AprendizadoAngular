@@ -8,7 +8,7 @@
         </rz-grid-column>
         <rz-grid-column format="date-time" property="Data" title="Data" type="string">
           <ng-template let-data gridColumnTemplate>
-          {{data?.Data | utcDate}}
+          {{data?.Data | date:'dd/MM/yyyy'}}
           </ng-template>
         </rz-grid-column>
         <rz-grid-column filterProperty="Pessoa.Nome" property="Responsavel" sortProperty="Pessoa.Nome" title="Pessoa" type="string">
@@ -16,9 +16,9 @@
           {{data?.Pessoa?.Nome}}
           </ng-template>
         </rz-grid-column>
-        <rz-grid-column format="decimal" property="Horas" title="Horas" type="number">
+        <rz-grid-column format="decimal" property="Horas" title="Horas" width="60px" type="number">
         </rz-grid-column>
-        <rz-grid-column property="Descricao" title="Descricao" type="string">
+        <rz-grid-column property="Descricao" title="Descrição" width="200px" type="string">
         </rz-grid-column>
         <rz-grid-column filterProperty="Projeto1.Descricao" property="Projeto" sortProperty="Projeto1.Descricao" title="Projeto" type="string">
           <ng-template let-data gridColumnTemplate>
@@ -27,7 +27,7 @@
         </rz-grid-column>
         <rz-grid-column format="date-time" property="dataDig" title="Data Dig" type="string">
           <ng-template let-data gridColumnTemplate>
-          {{data?.dataDig | utcDate}}
+          {{data?.dataDig | date:'dd/MM/yy HH:mm'}}
           </ng-template>
         </rz-grid-column>
         <rz-grid-column property="Manutencao" title="Manutencao" type="boolean">

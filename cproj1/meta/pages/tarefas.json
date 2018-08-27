@@ -30,7 +30,7 @@
                     {
                       "format": "date-time",
                       "property": "Data",
-                      "template": "${data.Data | utcDate}",
+                      "template": "${data.Data | date: \"dd/MM/yyyy\"}",
                       "title": "Data",
                       "type": "string"
                     },
@@ -46,12 +46,15 @@
                       "format": "decimal",
                       "property": "Horas",
                       "title": "Horas",
-                      "type": "number"
+                      "type": "number",
+                      "width": "60px"
                     },
                     {
+                      "filterProperty": "",
                       "property": "Descricao",
-                      "title": "Descricao",
-                      "type": "string"
+                      "title": "Descrição",
+                      "type": "string",
+                      "width": "200px"
                     },
                     {
                       "filterProperty": "Projeto1.Descricao",
@@ -62,9 +65,10 @@
                       "type": "string"
                     },
                     {
+                      "filterProperty": "",
                       "format": "date-time",
                       "property": "dataDig",
-                      "template": "${data.dataDig | utcDate}",
+                      "template": "${data.dataDig | date: \"dd/MM/yy HH:mm\"}",
                       "title": "Data Dig",
                       "type": "string"
                     },
